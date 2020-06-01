@@ -78,5 +78,5 @@ function addTask() {
         return dateParameter.getFullYear() === today.getFullYear() && dateParameter.getMonth() === today.getMonth() && dateParameter.getDate() === today.getDate();
     }
     console.log(date)
-    console.log("Is today ? ", isToday(new Date(date))); // true
+    console.log("Is today ? ", isToday(new Date(date)));
 }
