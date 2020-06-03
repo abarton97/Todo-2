@@ -24,7 +24,6 @@ export function createHeader() {
 
 export function createMenu() {
     const container = document.querySelector(".container");
-
     const menu = document.createElement("div");
     menu.setAttribute("class", "menu")
     container.appendChild(menu);
@@ -34,12 +33,14 @@ export function createMenu() {
     menu.appendChild(textContainer);
 
     const today = document.createElement("span");
-    today.setAttribute("class", "menuText active");
+    today.setAttribute("class", "tablink menuText active");
+    today.setAttribute("id", "today");
     today.innerHTML = '<i class="fas fa-calendar-day"></i>&nbsp;&nbsp;Today'
     textContainer.appendChild(today)
 
     const upcoming = document.createElement("span");
-    upcoming.setAttribute("class", "menuText");
+    upcoming.setAttribute("class", "tablink menuText");
+    upcoming.setAttribute("id", "upcoming");
     upcoming.innerHTML = '<i class="fas fa-calendar-alt"></i>&nbsp;&nbsp;Upcoming'
     textContainer.appendChild(upcoming)
 
@@ -56,20 +57,22 @@ export function createMenu() {
     labels.setAttribute("class", "projectText");
     labels.innerHTML = '<i class="fas fa-caret-right"></i>&nbsp;&nbsp;Labels'
     projectContainer.appendChild(labels)
-
 }
+
 
 export function createList() {
     const container = document.querySelector(".container");
     let n = new Date();
     let d = n.getDate();
 
+    /*Today*/
     const list = document.createElement("div")
-    list.setAttribute("class", "todaysList")
+    list.setAttribute("class", "tabcontent page")
+    list.setAttribute("id", "Today")
     container.appendChild(list)
 
     const title = document.createElement("div");
-    title.setAttribute("class", "title")
+    title.setAttribute("class", "theTitle")
     title.innerHTML = `Today`
     list.appendChild(title)
 
@@ -82,9 +85,33 @@ export function createList() {
     taskList.setAttribute("class", "taskList");
     list.appendChild(taskList);
 
+
+    /*Upcoming*/
+    const list1 = document.createElement("div")
+    list1.setAttribute("class", "tabcontent page")
+    list1.setAttribute("id", "Upcoming")
+    list1.setAttribute("style", "display:none");
+    container.appendChild(list1)
+
+    const title1 = document.createElement("div");
+    title1.setAttribute("class", "theTitle")
+    title1.innerHTML = `Upcoming`
+    list1.appendChild(title1)
+
+    const date1 = document.createElement("div");
+    date1.setAttribute("id", "date1")
+    date1.innerHTML = `${d}`
+    title1.appendChild(date1)
+
+    const taskList1 = document.createElement("a");
+    taskList1.setAttribute("class", "taskList1");
+    list1.appendChild(taskList1);
+
+    /*Buttons*/
+
     const addTask = document.createElement("a");
     addTask.setAttribute("class", "addTask");
-    list.appendChild(addTask)
+    container.appendChild(addTask)
 
     const addIcon = document.createElement("span")
     addIcon.setAttribute("class", "addIcon")
@@ -108,3 +135,4 @@ export function createList() {
     submit.innerText = "Add Task"
     addTask.appendChild(submit);
 }
+

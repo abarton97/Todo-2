@@ -99,7 +99,7 @@ body {
     background-color: #f2f2f2;
 }
 
-.todaysList {
+.tabcontent {
     margin-top: 10px;
     margin-left: 22%;
     padding-left: 2%;
@@ -109,7 +109,7 @@ body {
     position: relative;
 }
 
-.title {
+.theTitle {
     font-size: 7vh;
     font-family: 'Francois One', sans-serif;
     font-weight: 600;
@@ -122,8 +122,15 @@ body {
     margin-top: -2.2%;
 }
 
+#date1 {
+    font-size: 2vh;
+    margin-left: 25%;
+    margin-top: -2.2%;
+}
+
 .addTask {
     margin-top: 3%;
+    margin-left: 24%;
     padding: 0 0 0 3px !important;
     font-size: 13px !important;
     transition: opacity .15s ease-in;
@@ -241,6 +248,14 @@ body {
 }
 
 .taskList {
+    border-radius: 3px;
+    margin-top: 2%;
+    list-style: none;
+    margin-bottom: 50px;
+    display: block;
+}
+
+.taskList1 {
     border-radius: 3px;
     margin-top: 2%;
     list-style: none;
