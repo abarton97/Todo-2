@@ -42,7 +42,7 @@ body {
     width: 21%;
     height: 100vh;
     background-color: #fafafa;
-    position: fixed;
+    position: absolute;
     padding-top: 3%;
     font-family: 'Francois One', sans-serif;
     font-weight: 600;
@@ -69,6 +69,16 @@ body {
     margin-right: auto;
 }
 
+.projects {
+    font-size: 10px;
+    margin-left: -45%;
+    display: none;
+}
+
+.project_text:hover {
+    text-decoration: underline;
+}
+
 .projectText {
     min-height: 24px;
     font-size: 2.5vh;
@@ -80,15 +90,18 @@ body {
     display: flex;
     -webkit-box-align: baseline;
     align-items: baseline;
-    margin-left: auto;
-    margin-right: auto;
-    border-bottom: 1px solid #f1f1f1;
 }
 
 .projectContainer {
     margin: 0;
     padding: 0;
     padding-left: 13%;
+}
+
+.projectNames {
+    width: 100px;
+    overflow: hidden;
+    border-bottom: 1px solid #f1f1f1;
 }
 
 .active, .menuText:hover {
@@ -99,7 +112,7 @@ body {
     background-color: #f2f2f2;
 }
 
-.tabcontent {
+.tabcontent, .tabcontent1 {
     margin-top: 10px;
     margin-left: 22%;
     padding-left: 2%;
@@ -109,17 +122,17 @@ body {
     position: relative;
 }
 
-.theTitle {
+.theTitle, .theTitle1, .theTitle2 {
     font-size: 7vh;
     font-family: 'Francois One', sans-serif;
     font-weight: 600;
     color: black;
 }
 
-#date {
+#date, #pdate {
+    position: sticky;
     font-size: 2vh;
-    margin-left: 15%;
-    margin-top: -2.2%;
+    margin-left: 1%;
 }
 
 #date1 {
@@ -191,6 +204,19 @@ body {
     width: -10%;
 }
 
+.project-input {
+    border: none;
+    margin: 3%;
+    line-height: 40px;
+    width: 95%;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.2rem;
+    color: var(--tinted-white);
+    border: 2px solid transparent !important;
+    border-radius: 3px !important;
+    box-shadow: 0 2px 10px 0 rgba(0, 0, 0, .1);
+}
+
 .submit {
     border: none;
     width: 0%;
@@ -220,7 +246,7 @@ body {
 }
 
 .taskDate {
-    margin-left: 10px;
+    margin-left: auto;
     font-size: 10px;
     color: grey;
 }
@@ -247,6 +273,23 @@ body {
     cursor: pointer;
 }
 
+.taskD {
+    position: absolute;
+    margin-left: 6%;
+    max-width: 400px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.dText {
+    font-size: 25px;
+    height: 300px;
+    max-width: 400px;
+    font-family: 'Francois One', sans-serif;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 .taskList {
     border-radius: 3px;
     margin-top: 2%;
@@ -263,12 +306,22 @@ body {
     display: block;
 }
 
-.taskName {
-    margin-left: 35px;
-    font-size: 25px;
+.description {
     position: absolute;
-    margin-top: -25px;
-    margin-bottom: 10px;
+    font-family: 'Francois One', sans-serif;
+    display: block;
+    font-size: 15px;
+    margin-left: 5%;
+}
+
+.taskName {
+    float: left;
+    clear: both;
+    max-width: 400px;
+    margin-left: 5%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 25px;
     font-family: 'Francois One', sans-serif;
 }
 
@@ -277,7 +330,63 @@ body {
     margin-right: auto;
     border-bottom: 1px solid lightgray;
     padding-top: 1rem;
+}
+
+.remove {
+    float: right;
+    font-size: 30px;
+    border: none;
+    background: none;
     cursor: pointer;
+}
+
+.star {
+    float: right;
+    font-size: 30px;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.createBtn:hover, .createBtn1:hover {
+    background-color: lightgray;
+}
+
+.createBtn {
+    clear: both;
+    margin-left: 70%;
+    margin-top: -10%;
+    position: absolute;
+    -webkit-box-align: center;
+    align-items: center;
+    display: inline-flex;
+    border-radius: 50%;
+    height: 25px;
+    -webkit-box-pack: center;
+    justify-content: center;
+    font-size: 15px;
+    width: 25px;
+    cursor: pointer;
+}
+
+.createBtn1 {
+    margin-left: 70%;
+    margin-top: -10%;
+    position: absolute;
+    -webkit-box-align: center;
+    align-items: center;
+    display: inline-flex;
+    border-radius: 50%;
+    height: 25px;
+    -webkit-box-pack: center;
+    justify-content: center;
+    font-size: 15px;
+    width: 25px;
+    cursor: pointer;
+}
+
+.star:hover, .remove:hover {
+    color: green;
 }
 
 .containers {
@@ -285,12 +394,12 @@ body {
     position: relative;
     padding-left: 35px;
     margin-bottom: 12px;
-    cursor: pointer;
     font-size: 22px;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    white-space: nowrap;
 }
 
 /* Hide the browser's default checkbox */
@@ -311,13 +420,15 @@ body {
     left: 0;
     height: 25px;
     width: 25px;
+    cursor: pointer;
     border-radius: 50%;
     background-color: #eee;
+    margin-left: 5%;
 }
 
 /* On mouse-over, add a grey background color */
 
-.containers:hover input~.checkmark {
+.checkmark:hover {
     background-color: #ccc;
 }
 
@@ -353,4 +464,122 @@ body {
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
+}
+
+/*
+MODAL
+*/
+
+.modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    padding-top: 100px;
+    /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+    font-family: 'Francois One', sans-serif;
+}
+
+/* Modal Content */
+
+.modal-content {
+    position: relative;
+    border-radius: 5px;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    width: 25%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+
+/* Add Animation */
+
+@-webkit-keyframes animatetop {
+    from {
+        top: -300px;
+        opacity: 0
+    }
+    to {
+        top: 0;
+        opacity: 1
+    }
+}
+
+@keyframes animatetop {
+    from {
+        top: -300px;
+        opacity: 0
+    }
+    to {
+        top: 0;
+        opacity: 1
+    }
+}
+
+/* The Close Button */
+
+.close {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover, .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-header {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    padding: 2px 16px;
+    text-align: center;
+    background-color: #333333;
+    color: white;
+}
+
+.modal-body {
+    padding: 2px 16px;
+}
+
+.modal-footer {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    padding: 2px 16px;
+    background-color: #333333;
+    color: white;
+}
+
+.createProject {
+    margin: 3%;
+    margin-left: 40%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-family: 'Francois One', sans-serif;
+}
+
+.createProject:hover {
+    background-color: lightgray;
 }

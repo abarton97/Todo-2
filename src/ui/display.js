@@ -7,6 +7,7 @@ export function createHeader() {
     header.setAttribute("class", "header");
     container.appendChild(header);
 
+
     const controls = document.createElement("div");
     controls.setAttribute("class", "constrols");
     header.appendChild(controls)
@@ -50,13 +51,18 @@ export function createMenu() {
 
     const projects = document.createElement("span");
     projects.setAttribute("class", "projectText");
-    projects.innerHTML = '<i class="fas fa-caret-right"></i>&nbsp;&nbsp;Projects'
+    projects.innerHTML = '<i class="fas fa-caret-right"></i>&nbsp;&nbsp;Projects';
     projectContainer.appendChild(projects)
 
-    const labels = document.createElement("span");
-    labels.setAttribute("class", "projectText");
-    labels.innerHTML = '<i class="fas fa-caret-right"></i>&nbsp;&nbsp;Labels'
-    projectContainer.appendChild(labels)
+    const createBtn = document.createElement("span");
+    createBtn.setAttribute("class", "createBtn");
+    createBtn.innerHTML = '<i class="fas fa-plus"></i>'
+    projectContainer.appendChild(createBtn)
+
+    const nprojects = document.createElement("span");
+    nprojects.setAttribute("class", "projects");
+    projectContainer.appendChild(nprojects)
+
 }
 
 
@@ -64,7 +70,6 @@ export function createList() {
     const container = document.querySelector(".container");
     let n = new Date();
     let d = n.getDate();
-
     /*Today*/
     const list = document.createElement("div")
     list.setAttribute("class", "tabcontent page")
@@ -99,7 +104,7 @@ export function createList() {
     list1.appendChild(title1)
 
     const date1 = document.createElement("div");
-    date1.setAttribute("id", "date1")
+    date1.setAttribute("id", "date")
     date1.innerHTML = `${d}`
     title1.appendChild(date1)
 
@@ -107,11 +112,32 @@ export function createList() {
     taskList1.setAttribute("class", "taskList1");
     list1.appendChild(taskList1);
 
+    /*projects*/
+    const list2 = document.createElement("div")
+    list2.setAttribute("class", "tabcontent1 page")
+    list2.setAttribute("style", "display:none");
+    container.appendChild(list2)
+
+    const title2 = document.createElement("div");
+    title2.setAttribute("class", "theTitle2")
+    title2.innerHTML = `projects123`
+    list2.appendChild(title2)
+
+    const date2 = document.createElement("div");
+    date2.setAttribute("id", "pdate")
+    date2.innerHTML = `${d}`
+    title2.appendChild(date2)
+
+    const taskList2 = document.createElement("a");
+    taskList2.setAttribute("class", "taskList1");
+    list2.appendChild(taskList2);
+
     /*Buttons*/
 
     const addTask = document.createElement("a");
     addTask.setAttribute("class", "addTask");
     container.appendChild(addTask)
+
 
     const addIcon = document.createElement("span")
     addIcon.setAttribute("class", "addIcon")
@@ -134,5 +160,38 @@ export function createList() {
     submit.setAttribute("class", "submit");
     submit.innerText = "Add Task"
     addTask.appendChild(submit);
+
+
+    const createModal = document.createElement("div");
+    createModal.setAttribute("id", "myModal");
+    createModal.setAttribute("class", "modal");
+    container.appendChild(createModal)
+
+    const createModal1 = document.createElement("div");
+    createModal1.setAttribute("class", "modal-content");
+    createModal.appendChild(createModal1)
+
+    const createModal2 = document.createElement("div");
+    createModal2.setAttribute("class", "modal-header");
+    createModal1.appendChild(createModal2)
+
+    const createModal3 = document.createElement("span");
+    createModal3.setAttribute("class", "close");
+    createModal3.innerHTML = '&times;';
+    createModal2.appendChild(createModal3)
+
+    const createModal4 = document.createElement("h2");
+    createModal4.innerHTML = 'Add Project';
+    createModal2.appendChild(createModal4)
+
+    const createModal5 = document.createElement("div");
+    createModal5.setAttribute("class", "modal-body");
+    createModal5.innerHTML = '<input type="text" class="project-input" placeholder="Add Project"></input>';
+    createModal1.appendChild(createModal5)
+
+    const createModal6 = document.createElement("div");
+    createModal6.setAttribute("class", "modal-footer");
+    createModal6.innerHTML = '<input class="createProject" type="submit" value="Create">';
+    createModal1.appendChild(createModal6);
 }
 
